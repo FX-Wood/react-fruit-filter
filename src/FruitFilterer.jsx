@@ -4,10 +4,10 @@ class FruitFilterer extends Component {
     render() {
         return (
             <ul>
-                <input type="text"/>
+                <input type="text" value={this.props.filterValue}/>
             </ul>
         )
     }
 }
 
-export default FruitFilerer
+export default FruitFilterer
