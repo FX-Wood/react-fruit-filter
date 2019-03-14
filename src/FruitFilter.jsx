@@ -14,17 +14,18 @@ class FruitFilter extends Component {
   }
   handleFilterChange(e) {
     e.preventDefault()
-    this.setState(state => {
+    let filterValue = e.target.value.toLowerCase()
+    this.setState((state, props) => {
       return {
-        fruitArr: state.fruitArr.filter( fruit => fruit.contains(e.target.value.toLowerCase())),
-        filterValue: e.target.value
+        fruitArr: props.fruits.filter(fruit => fruit.includes(filterValue)),
+        filterValue: filterValue
       }
     })
   }
   render() {
     return (
       <div className="FruitFilter">
-        <FruitFilterer filter={this.state.filterValue} />
+        <FruitFilterer filter={this.state.filterValue} onChange={this.handleFilterChange} />
         <FruitList fruits={this.state.fruitArr} />
       </div>
     );
