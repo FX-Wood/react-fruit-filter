@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class FruitList extends Component {
     render() {
         return (
-            <li> I'm a banana</li>
+            this.props.fruits.map((fruit, i) => <li key={i} >{fruit}</li> )
         )
     }
 }
