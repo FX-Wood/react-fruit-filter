@@ -7,15 +7,25 @@ class FruitFilter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fruitArray: props.fruits,
+      fruitArr: props.fruits,
       filterValue: ''
     }
+    this.handleFilterChange = this.handleFilterChange.bind(this)
+  }
+  handleFilterChange(e) {
+    e.preventDefault()
+    this.setState(state => {
+      return {
+        fruitArr: state.fruitArr.filter( fruit => fruit.contains(e.target.value.toLowerCase())),
+        filterValue: e.target.value
+      }
+    })
   }
   render() {
     return (
       <div className="FruitFilter">
         <FruitFilterer filter={this.state.filterValue} />
-        <FruitList fruits={this.state.fruitsToDisplay} />
+        <FruitList fruits={this.state.fruitArr} />
       </div>
     );
   }
